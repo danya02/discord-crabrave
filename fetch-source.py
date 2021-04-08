@@ -1,5 +1,10 @@
 import requests
 import os
+import sys
+
+real_print = print
+def print(*args):
+    real_print(*args, file=sys.stderr, flush=True)
 
 try:
     print('Creating directory')
