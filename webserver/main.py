@@ -5,11 +5,12 @@ app = Flask(__name__)
 
 db = redis.Redis(host='redisserver')
 
-@app.route('/<file>.gif')
-def serve_file(file):
+@app.route('/<file>')
+@app.route('/<file>.<ext>')
+def serve_file(file, ext=None):
     result = db.get(file)
     if result is None:
-        return abort(404)
+        return abort(425)
     result = make_response(result)
-    result.mimetype='image/gif'
+    result.mimetype='video/mp4'
     return result

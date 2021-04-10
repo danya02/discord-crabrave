@@ -5,8 +5,6 @@ services:
     restart: unless-stopped
     env_file:
      - CONFIG.env
-    volumes:
-     - ./server_config.db:/config.db
     depends_on:
      - redisserver
   redisserver:
@@ -18,4 +16,4 @@ services:
     depends_on:
      - redisserver
     ports:
-     - "127.0.0.1:8731:8000"
+     - "127.0.0.1:8141:8000"
